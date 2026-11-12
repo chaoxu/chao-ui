@@ -134,14 +134,14 @@ Do not turn the three-second temporal-integration research into a fixed slide du
 
 ## Output contract
 
-HTML is the canonical presentation artifact. The source, theme, components, and assets compile to the live webpage first. The same build exports a PDF derivative and publishes only after both outputs pass their gates.
+HTML is the canonical presentation artifact. The source, theme, components, and assets compile to the live webpage first. The user's request and the owning project's delivery requirements determine which formats to produce. Generate a PDF when requested or required by the project. Publish each selected output after it passes its validation checks.
 
 | Output | Responsibility |
 | --- | --- |
 | HTML | projection, navigation, fragments, motion, links, presenter controls, demonstrations, and interactive components |
-| PDF | offline fallback, handout, archive, printing, reimbursement evidence, and a stable record of the talk |
+| PDF, when produced | offline fallback, handout, archive, printing, reimbursement evidence, and a stable record of the talk |
 
-Keep projected text concise and legible at distance. Place dense derivations, full citations, and supplementary tables in notes or a companion document. The PDF must remain understandable without spoken transitions, embed or subset every font, and preserve stable links and identifiers.
+Keep projected text concise and legible at distance. Place dense derivations, full citations, and supplementary tables in notes or a companion document. When a PDF is produced, it must remain understandable without spoken transitions, embed or subset every font, and preserve stable links and identifiers.
 
 ## Dynamic slides
 
@@ -197,7 +197,7 @@ pf-slide-meta
 
 ## Specimen and validation
 
-`specimens/typography-slides.md` is the canonical mixed-language and mathematics specimen. It uses the local font files declared in `fonts.css`. Keep generated HTML and PDF together in `output/` so the specimen's relative stylesheet paths resolve. For deployment, include those stylesheets and `vendor/`, or rewrite the paths for the destination. Production decks must pin and self-host or embed the selected families and preserve their notices.
+`specimens/typography-slides.md` is the canonical mixed-language and mathematics specimen. It uses the local font files declared in `fonts.css`. Keep generated artifacts in `output/` so the specimen's relative stylesheet paths resolve. For deployment, include those stylesheets and `vendor/`, or rewrite the paths for the destination. Production decks must pin and self-host or embed the selected families and preserve their notices.
 
 Marp is the retained Node runtime contract for this slide source format. It does not establish Node as the general `chao-ui` automation runtime.
 
@@ -206,9 +206,7 @@ Validate a changed deck through:
 - source review and `git diff --check`
 - browser rendering with console and network inspection
 - a desktop screenshot at presentation dimensions
-- PDF export and page rendering to PNG
-- `pdffonts` inspection for embedding and substitution
 - visual inspection of Chinese regional forms, math delimiters, code alignment, overflow, and source lines
 - a render on each browser and operating system used for presentation
 
-The browser and PDF must show the same reading order, complete content, and approved font roles before release.
+Check reading order, complete content, and approved font roles in each selected output. When a PDF is selected, also export it, render its pages to PNG, inspect embedding and substitution with `pdffonts`, and compare it with the browser rendering.
