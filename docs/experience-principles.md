@@ -4,6 +4,10 @@
 
 Scientific editorial is a derived profile. Its dark fields, pale specimens, measurement marks, and institutional typography are contingent choices that produce a particular experience. They are not the source principles of `chao-ui`.
 
+## Using this guide
+
+For a new artifact or a substantial change in visual direction, use the [design brief](#brief-for-any-new-artifact) to record the intended experience and the [review gates](#review-gates) to check the result. Read the research sections relevant to those decisions. The [README task router](../README.md#choose-a-task) identifies the profile guide, implementation, and specimen. For a routine edit to an established artifact, consult the sections affected by the change.
+
 ## Provenance and evidence boundary
 
 The public programme for the 2026 SISU-LMU-VDW Summer School, “The Power of Aesthetics,” identifies Helmut Leder’s lecture as “Empirical Aesthetics - History, Concepts, and Studies on ‘What is Beauty?’” and Elvira Barkhatova’s lecture as “Fletz, Bummelzwock, and the Eye of the Beholder.” The programme connects empirical aesthetics with Barkhatova’s work in cognitive linguistics, cognitive neology, lexical beauty, and manipulation analysis.

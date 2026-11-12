@@ -2,27 +2,26 @@
 
 `chao-ui` is a visual design system for websites, applications, dashboards, technical essays, slides, posters, covers, and research graphics. It combines reusable CSS and browser components with guidance on typography, evidence, interaction, and visual composition. Preserve an established product theme when a project already has one, and follow an explicitly requested alternative.
 
-The default interface is a white light-mode surface with IBM Plex Sans, Inconsolata for code and data, flat monochrome components, square corners, subtle borders, and no decorative gradients or shadows. Mathematical pages add KaTeX within the same shell.
+The default interface uses a white light-mode surface, light-slate panels, deep ink text, IBM Plex Sans, Inconsolata for code and data, flat components, square corners, and subtle borders. Color communicates meaning. Decorative gradients, shadows, glassmorphism, and ornamental color are outside this interface profile. Mathematical pages add KaTeX within the same shell.
 
-## Files
+## Choose a task
 
-- `theme.css` contains the interface tokens, resets, controls, tables, badges, and data-display primitives.
-- `fonts.css` loads the bundled font files from `vendor/`.
-- `docs/experience-principles.md` defines the general model for context, time, culture, perception, fluency, meaning, affect, conceptual framing, multiscale structure, autonomy, and external cognition.
-- `docs/typography.md` defines Latin, regional Chinese, mathematics, code, fallback, delivery, and embedding rules.
-- `docs/slides.md` defines deck structure, slide roles, mixed-language mathematics, evidence, rhythm, export, and validation.
-- `slides.css` contains reusable slide typography and layout primitives.
-- `essay.css`, `essay.js`, and `diagrams.js` provide the technical and mathematical essay profile: a table of contents, margin sidenotes, serif prose, theorem blocks, and canvas diagrams.
-- `docs/essay.md` defines the exposition layout and analytical diagram grammar, rendered in `essay.html`.
-- `editorial.css` contains the opt-in Bright Field and Dark Field layouts for posters, covers, landing-page heroes, and research campaigns.
-- `docs/scientific-editorial.md` defines one derived art-direction profile, with field variants, generation briefs, accuracy rules, anti-patterns, and an evaluation rubric.
-- `specimens/typography-slides.md` is the canonical mixed Chinese, mathematics, and code specimen deck.
-- `index.html` is the rendered reference for both the interface system and editorial profiles.
-- `THIRD_PARTY_NOTICES.md` lists bundled dependencies and their licenses. `vendor/manifest.json` records their source URLs, versions, and hashes.
+For a new artifact or a substantial change in visual direction, start with the [design brief](docs/experience-principles.md#brief-for-any-new-artifact) and [review gates](docs/experience-principles.md#review-gates), then follow the relevant row. For a routine edit, read the guide sections and implementation affected by the change, using the existing artifact as context.
+
+| Task | Profile or shared guidance | Read | Implementation and reference |
+| --- | --- | --- | --- |
+| Website, application, or dashboard | Default interface | [Interface standard](#interface-standard) | [theme.css](theme.css), [index.html](index.html) |
+| Technical essay, research post, or mathematical survey | Essay | [Essay guide](docs/essay.md) | [essay.css](essay.css), [essay.js](essay.js), [essay.html](essay.html) |
+| Presentation | Slides | [Slide guide](docs/slides.md) | [slides.css](slides.css), [marp.config.json](marp.config.json), [typography specimen](specimens/typography-slides.md) |
+| Poster, cover, campaign image, or editorial hero | Scientific editorial, with Bright Field or Dark Field | [Scientific editorial guide](docs/scientific-editorial.md) | [editorial.css](editorial.css), [index.html](index.html) |
+| Analytical diagram within an artifact | The containing profile and diagram rules | [Analytical diagram rules](docs/essay.md#analytical-diagram-rules-diagramsjs) | [diagrams.js](diagrams.js), [essay.html](essay.html) |
+| Chinese, mathematics, code alignment, or font delivery | Typography across profiles | [Typography guide](docs/typography.md) | [fonts.css](fonts.css), [asset manifest](vendor/manifest.json), [typography specimen](specimens/typography-slides.md) |
+
+Profiles select typography, layout, and composition for their contexts. Scientific editorial is opt-in for a canvas or region. Its controls and navigation retain the interface standard. The [experience principles](docs/experience-principles.md) explain the design model and provide research context for decisions that need it.
 
 ## Use
 
-Copy the shared CSS files, `fonts.css`, and `vendor/` into your static site,
+Copy `theme.css`, the selected profile's files, `fonts.css`, and `vendor/` into your static site,
 preserving their relative paths. Include `LICENSE` and
 `THIRD_PARTY_NOTICES.md` with the copied files. An essay also uses `essay.js`
 and, when it contains canvas diagrams, `diagrams.js` and its own diagram code.
@@ -31,9 +30,10 @@ Import the shared styles before product-specific layout rules:
 
 ```html
 <link rel="stylesheet" href="theme.css">
-<link rel="stylesheet" href="editorial.css">
 <link rel="stylesheet" href="site.css">
 ```
+
+Insert `essay.css` or `editorial.css` between these stylesheets when using that profile. Slides use the theme registration and build commands in the slide guide.
 
 `theme.css` and `essay.css` import `fonts.css`. The included examples load
 font and KaTeX assets from this repository. Keep KaTeX's CSS, JavaScript,
@@ -52,10 +52,6 @@ Open `http://127.0.0.1:8000/index.html` or
 `http://127.0.0.1:8000/essay.html`. Static-site use requires no build step.
 The [slide guide](docs/slides.md) documents the separate Marp build commands.
 
-Product styles should consume the `--pf-*` variables. Site-specific CSS may define layout and document semantics. Reusable tokens, components, and visual patterns belong here.
-
-Read `docs/experience-principles.md` before selecting a profile or inventing a visual treatment. Begin from purpose, audience, culture, context, content frame, required action, expertise, evidence, affect, time course, scale, and external-memory needs. Palette and surface style follow those decisions.
-
 ## Interface standard
 
 User-facing interfaces should provide:
@@ -69,26 +65,11 @@ User-facing interfaces should provide:
 
 Framework choice is independent of the visual system. The same tokens and interaction standards apply to static HTML, HTMX, React, and other implementations.
 
-## Typography and slides
+## Authority and extension
 
-Read `docs/typography.md` whenever an artifact contains Chinese, mathematics, or aligned multilingual code. Read `docs/slides.md` before designing a deck. Import `slides.css` after `theme.css` for slide-specific roles and layouts.
+This README owns task routing, the interface standard, and bundle integration. The profile guides own their artifact-specific design and validation rules. The typography guide owns font roles, language routing, and embedding. CSS and JavaScript define the implemented tokens and behavior. Keep the relevant guide and specimen consistent when changing that implementation. [Third-party notices](THIRD_PARTY_NOTICES.md) and the [asset manifest](vendor/manifest.json) record dependency terms and provenance.
 
-The default slide stack uses IBM Plex Sans for Latin text, IBM Plex Sans SC or TC for Chinese, KaTeX’s coordinated fonts in the existing Marp pipeline, IBM Plex Math for compatible OpenType MATH engines, IBM Plex Mono for Latin code, and Sarasa Mono for code containing Chinese.
-
-## Scientific editorial profiles
-
-Scientific editorial is a worked profile derived from the general experience principles. Bright Field and Dark Field are two presentations of that profile:
-
-- **Bright Field** places an unfamiliar specimen or structure in active warm-white space. Grazing light, relief, translucency, shadow, or one dense inclusion reveals the important event.
-- **Dark Field** places an unfamiliar phenomenon in active near-black space. Localized warm-ivory emission reveals one seam, node, aperture, trajectory, or intersection.
-
-Both profiles use one dominant phenomenon, asymmetric composition, sparse measurement graphics, credible material detail, limited color, exact typography, and intentional copy space. They are opt-in editorial canvases rather than global replacements for the interface theme.
-
-Read `docs/scientific-editorial.md` before creating or directing a scientific poster, cover, campaign image, or editorial research page.
-
-## Extension rule
-
-Begin with the general experience principles, then use the existing tokens and patterns. When a required reusable pattern is missing, add it to `chao-ui` instead of creating a nearby untracked visual system inside one product.
+Product styles consume the shared `--pf-*` variables. Content, data, and site-specific layout belong in the consuming project. Add reusable tokens, components, and visual patterns to the relevant shared implementation and document them in its guide. A new profile needs a recurring context, scoped styles, and a specimen that demonstrates its behavior and review criteria.
 
 ## Browser storage and requests
 
