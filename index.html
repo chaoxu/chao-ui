@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chao-UI Style Guide</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="editorial.css">
+  <style>
+    body {
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 40px;
+      border-bottom: 2px solid var(--pf-border-strong);
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      color: var(--pf-muted);
+      font-size: 1.1rem;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      border-bottom: 1px solid var(--pf-border);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .component-card {
+      background-color: var(--pf-surface);
+      border: 1px solid var(--pf-border);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .theme-toggle-btn {
+      margin-top: 10px;
+    }
+
+    .form-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .table-card {
+      padding: 0;
+      overflow-x: auto;
+    }
+
+    .histogram-fill-demo-cpu {
+      width: 35%;
+    }
+
+    .histogram-fill-demo-mem {
+      width: 72%;
+    }
+
+    .editorial-stack {
+      display: grid;
+      gap: 32px;
+    }
+
+    .editorial-demo-visual {
+      min-height: 30rem;
+    }
+
+    .demo-specimen,
+    .demo-orbit,
+    .demo-seam,
+    .demo-node,
+    .demo-axis {
+      position: absolute;
+    }
+
+    .demo-specimen {
+      inset: 14% 12% -12% -8%;
+      background-color: var(--pf-editorial-surface);
+      border: 1px solid var(--pf-editorial-rule);
+      clip-path: polygon(7% 12%, 76% 0, 100% 31%, 85% 100%, 18% 91%, 0 52%);
+    }
+
+    .demo-orbit {
+      width: 72%;
+      aspect-ratio: 1;
+      top: 10%;
+      left: 8%;
+      border: 1px solid var(--pf-editorial-rule);
+      border-radius: 50% !important;
+    }
+
+    .demo-seam {
+      width: 43%;
+      height: 2px;
+      top: 56%;
+      left: 25%;
+      background-color: var(--pf-editorial-reveal);
+      transform: rotate(-18deg);
+      transform-origin: left center;
+    }
+
+    .demo-node {
+      width: 14px;
+      height: 14px;
+      top: calc(56% - 6px);
+      left: 47%;
+      background-color: var(--pf-editorial-accent);
+      border: 2px solid var(--pf-editorial-bg);
+      border-radius: 50% !important;
+    }
+
+    .demo-axis {
+      width: 62%;
+      height: 28%;
+      top: 22%;
+      left: 18%;
+      border-left: 1px solid var(--pf-editorial-rule);
+      border-bottom: 1px solid var(--pf-editorial-rule);
+    }
+
+    .mark-top {
+      top: 24px;
+      left: 24px;
+    }
+
+    .mark-bottom {
+      right: 24px;
+      bottom: 24px;
+      text-align: right;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 20px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chao-UI Design System</h1>
+    <div class="description">The canonical aesthetic and functional system for interfaces, documents, posters, covers, and scientific editorial work.</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+      <button class="theme-toggle-btn" style="margin-top:0" type="button" aria-pressed="false" onclick="toggleTheme(this)">Use Dark Interface</button>
+      <a class="btn" href="essay.html">Open Exposition &amp; Diagram Specimen →</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Scientific Editorial Fields</h2>
+    <div class="editorial-stack">
+      <article class="pf-editorial" data-field="bright">
+        <div class="pf-editorial-layout">
+          <div class="pf-editorial-visual editorial-demo-visual" aria-hidden="true">
+            <div class="demo-specimen"></div>
+            <div class="demo-axis"></div>
+            <div class="demo-seam"></div>
+            <div class="demo-node"></div>
+            <span class="pf-editorial-mark mark-top">Plate 04 / Bright Field</span>
+            <span class="pf-editorial-mark mark-bottom">x 17.2<br>y 06.4</span>
+          </div>
+          <div class="pf-editorial-copy">
+            <div class="pf-editorial-heading">
+              <p class="pf-editorial-eyebrow">Observed structure / 04</p>
+              <h3 class="pf-editorial-title">Bright Field</h3>
+              <hr class="pf-editorial-rule">
+              <p class="pf-editorial-deck">An unfamiliar specimen held in active warm-white space. Relief, shadow, or one dense inclusion reveals its structure.</p>
+            </div>
+            <dl class="pf-editorial-metadata">
+              <div><dt>Mode</dt><dd>Pale specimen</dd></div>
+              <div><dt>Density</dt><dd>Medium</dd></div>
+              <div><dt>Reveal</dt><dd>Graphite seam</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+
+      <article class="pf-editorial" data-field="dark">
+        <div class="pf-editorial-layout">
+          <div class="pf-editorial-visual editorial-demo-visual" aria-hidden="true">
+            <div class="demo-specimen"></div>
+            <div class="demo-orbit"></div>
+            <div class="demo-seam"></div>
+            <div class="demo-node"></div>
+            <span class="pf-editorial-mark mark-top">Plate 07 / Dark Field</span>
+            <span class="pf-editorial-mark mark-bottom">phase 02<br>node 11</span>
+          </div>
+          <div class="pf-editorial-copy">
+            <div class="pf-editorial-heading">
+              <p class="pf-editorial-eyebrow">Contained phenomenon / 07</p>
+              <h3 class="pf-editorial-title">Dark Field</h3>
+              <hr class="pf-editorial-rule">
+              <p class="pf-editorial-deck">A monumental unknown held in deep negative space. One warm emission exposes a seam, node, aperture, or trajectory.</p>
+            </div>
+            <dl class="pf-editorial-metadata">
+              <div><dt>Mode</dt><dd>Dark monolith</dd></div>
+              <div><dt>Density</dt><dd>Low</dd></div>
+              <div><dt>Reveal</dt><dd>Warm-ivory seam</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography &amp; Headings</h2>
+    <div class="component-card">
+      <h1>Heading 1 (IBM Plex Sans)</h1>
+      <h2>Heading 2 (IBM Plex Sans)</h2>
+      <h3>Heading 3 (IBM Plex Sans)</h3>
+      <p>Body text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
+      <p>Monospace text: <code>const theme = "chao-ui"; console.log(theme);</code> (Inconsolata)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buttons &amp; Forms</h2>
+    <div class="grid-2">
+      <div class="component-card">
+        <h3>Buttons</h3>
+        <div>
+          <button type="button">Standard Button</button>
+          <button class="primary" type="button">Primary Button</button>
+        </div>
+      </div>
+      <div class="component-card">
+        <h3>Inputs</h3>
+        <div class="form-stack">
+          <input type="text" placeholder="Text input...">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Status Badges</h2>
+    <div class="component-card">
+      <div>
+        <span class="badge badge-online">online</span>
+        <span class="badge badge-offline">offline</span>
+        <span class="badge">generic</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Histograms (Progress Bars)</h2>
+    <div class="component-card">
+      <h3>CPU Load</h3>
+      <div class="histogram-container">
+        <span>CPU</span>
+        <div class="histogram-bar">
+          <div class="histogram-fill histogram-fill-cpu histogram-fill-demo-cpu"></div>
+        </div>
+        <span>35%</span>
+      </div>
+
+      <h3>Memory Allocation</h3>
+      <div class="histogram-container">
+        <span>RAM</span>
+        <div class="histogram-bar">
+          <div class="histogram-fill histogram-fill-mem histogram-fill-demo-mem"></div>
+        </div>
+        <span>72%</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tables</h2>
+    <p>Fictional entries for demonstrating table layout and status badges.</p>
+    <div class="component-card table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Example</th>
+            <th>Status</th>
+            <th>Items</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>alpha.example</strong></td>
+            <td><span class="badge badge-online">online</span></td>
+            <td>24</td>
+            <td>Sample catalog</td>
+          </tr>
+          <tr>
+            <td><strong>beta.example</strong></td>
+            <td><span class="badge badge-online">online</span></td>
+            <td>12</td>
+            <td>Preview collection</td>
+          </tr>
+          <tr>
+            <td><strong>gamma.example</strong></td>
+            <td><span class="badge badge-offline">offline</span></td>
+            <td>36</td>
+            <td>Archived examples</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script>
+    function toggleTheme(button) {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        html.removeAttribute('data-theme');
+        button.setAttribute('aria-pressed', 'false');
+        button.textContent = 'Use Dark Interface';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        button.setAttribute('aria-pressed', 'true');
+        button.textContent = 'Use Light Interface';
+      }
+    }
+  </script>
+</body>
+</html>

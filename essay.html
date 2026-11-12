@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weighted Norms and a Polygon Example — chao-ui Specimen</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script defer src="vendor/katex/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}] });"></script>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="essay.css">
+  <script src="essay.js"></script>
+</head>
+<body class="pf-essay">
+  <header class="pf-essay-topnav">
+    <a class="pf-essay-brand" href="index.html">chao-ui</a>
+    <nav class="pf-essay-navlinks" aria-label="Primary">
+      <a href="index.html">Interface &amp; Editorial</a>
+      <a href="essay.html" aria-current="page">Exposition &amp; Diagrams</a>
+      <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short aria-label="Switch to dark mode">☾</button>
+    </nav>
+  </header>
+
+  <main class="pf-essay-shell">
+    <article>
+      <header class="pf-essay-masthead">
+        <div class="pf-essay-kicker">Exposition &amp; Diagram Profile Specimen</div>
+        <h1 class="pf-essay-title" id="article-title">Weighted Norms and a Polygon Example</h1>
+        <p class="pf-essay-subtitle">A typesetting and interaction specimen. The polygon is defined below. Animation traces and chart values are illustrative fixtures created for this page.</p>
+        <div class="pf-essay-byline">
+          <span>Chao Xu</span>
+          <time datetime="2026-11-11">November 11, 2026</time>
+        </div>
+      </header>
+
+      <figure class="pf-essay-hero pf-diagram">
+        <canvas data-demo="scripted-queues" style="height:210px" role="img"
+          aria-label="Illustrative progress animations for two fictional task queues. The counts and timing are scripted."></canvas>
+        <figcaption>
+          <span>Fig. 0 — Fictional task queues with scripted progress. The animation demonstrates timing, wrapping, and status colors.</span>
+          <button class="pf-diagram-ctrl" type="button" data-diagram-toggle>❚❚ Pause</button>
+        </figcaption>
+      </figure>
+
+      <div class="pf-essay-grid">
+        <aside class="pf-essay-toc" aria-label="Contents"></aside>
+
+        <div class="pf-essay-prose">
+          <h2 id="overview"><span class="header-section-number">1</span> Comparing Two Norms</h2>
+          <p>For a positive integer $n$ and a vector $x \in \mathbb{R}^n$, the $\ell_1$ norm adds the absolute values of its coordinates. The Euclidean norm takes the square root of the sum of their squares.<sup id="fnref1"><a href="#fn1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+
+          <div class="theorem-environment Theorem" id="thm-norms" data-index="1" type="Theorem">
+            <span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span><span class="name">Norm Inequality</span></span>
+            <p>Every $x \in \mathbb{R}^n$ satisfies $\lVert x\rVert_2 \le \lVert x\rVert_1$. Equality holds exactly when at most one coordinate is nonzero.</p>
+          </div>
+
+          <div class="theorem-environment Proof" type="Proof">
+            <span class="theorem-header"><span class="type">Proof</span></span>
+            <p>Expanding the square gives</p>
+            $$\begin{aligned}
+              \lVert x\rVert_1^2 &amp;= \sum_{i=1}^n x_i^2 + 2\sum_{i&lt;j}|x_i x_j|\\
+              &amp;\ge \sum_{i=1}^n x_i^2 = \lVert x\rVert_2^2.
+            \end{aligned}$$
+            <p>Taking nonnegative square roots proves the inequality. Equality holds exactly when every product $x_i x_j$ with $i \ne j$ is zero.</p>
+          </div>
+
+          <h2 id="l1-geometry"><span class="header-section-number">2</span> A Weighted Norm on a Polygon</h2>
+          <p>The diagram uses a polygon $P$ inside the box $[-2.5,1.5]\times[-1.65,1.65]$. Its additional constraints are</p>
+          $$\begin{aligned}
+            x_1 + 0.32x_2 &amp;\le -0.95,\\
+            0.78x_1 - 0.52x_2 &amp;\le -0.95,\\
+            |0.18x_1 + x_2| &amp;\le 0.62.
+          \end{aligned}$$
+
+          <p>For positive weights $w_1,w_2$, the set $\{x:w_1|x_1|+w_2|x_2|\le r\}$ is a diamond when $r&gt;0$. The animation grows this diamond until it first touches $P$. The contact point minimizes the weighted norm over this polygon.<sup id="fnref2"><a href="#fn2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+
+          <figure class="pf-diagram">
+            <canvas data-demo="l1-polytope" style="height:310px" role="img"
+              aria-label="The defined polygon and a growing weighted L1 diamond. Horizontal pointer movement changes the second weight."></canvas>
+            <figcaption>
+              <span>Fig. 1 — Move your cursor horizontally to vary $w_2$ from $0.35$ to $2.2$, with $w_1=1$. The highlighted point minimizes the weighted norm for the selected weights.</span>
+              <button class="pf-diagram-ctrl" type="button" data-diagram-toggle>❚❚ Pause</button>
+            </figcaption>
+          </figure>
+
+          <h2 id="illustrative-data"><span class="header-section-number">3</span> Illustrative Chart Data</h2>
+          <p>The chart and table use the same unitless values, chosen for this specimen to exercise grouping, labels, and color. Series A through D name display fixtures. These values are not measurements of algorithms or systems.<sup id="fnref3"><a href="#fn3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+
+          <figure class="pf-diagram">
+            <canvas data-demo="matrix-bars" style="height:275px" role="img"
+              aria-label="Illustrative grouped bars for Series A through D across Cases A through D, using the values in the following table."></canvas>
+            <figcaption>
+              <span>Fig. 2 — Illustrative values on a scale from 0 to 100. Animation changes bar height only to demonstrate the transition.</span>
+              <button class="pf-diagram-ctrl" type="button" data-diagram-toggle>❚❚ Pause</button>
+            </figcaption>
+          </figure>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Series</th>
+                <th>Case A</th>
+                <th>Case B</th>
+                <th>Case C</th>
+                <th>Case D</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Series A</td>
+                <td>20</td>
+                <td>35</td>
+                <td>65</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Series B</td>
+                <td>40</td>
+                <td>55</td>
+                <td>25</td>
+                <td>70</td>
+              </tr>
+              <tr>
+                <td>Series C</td>
+                <td>60</td>
+                <td>75</td>
+                <td>45</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Series D</td>
+                <td>80</td>
+                <td>45</td>
+                <td>85</td>
+                <td>60</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="bilingual-specimen"><span class="header-section-number">4</span> Bilingual CJK &amp; Mathematical Orthography</h2>
+          <div lang="zh-CN" class="pf-zh-sc">
+            <p>这段文字展示中文、Latin text 与数学公式的混排。中文正文使用区域字体，强调文字用字重区分，例如<em>加权范数</em>与<em>可行多边形</em>。上方图表的数据专为排版示例设定。</p>
+
+            <div class="theorem-environment Example" data-index="1" type="Example">
+              <span class="theorem-header"><span class="type">例</span><span class="index">1</span><span class="name">向量 $(3,4)$ 的范数</span></span>
+              <p>取 $x=(3,4)$，则 $\lVert x\rVert_1=|3|+|4|=7$，$\lVert x\rVert_2=\sqrt{3^2+4^2}=5$。两个坐标均非零，所以这里的不等式为严格不等式 $5&lt;7$。</p>
+            </div>
+          </div>
+
+          <section class="footnotes" role="doc-endnotes">
+            <ol>
+              <li id="fn1">
+                <p>For $n=1$, both norms equal the absolute value of the coordinate. <a href="#fnref1" class="footnote-backref" role="doc-backlink">↩︎</a></p>
+              </li>
+              <li id="fn2">
+                <p>The implementation checks polygon vertices and edge crossings of the axes. Along each edge, the objective is linear between these points. <a href="#fnref2" class="footnote-backref" role="doc-backlink">↩︎</a></p>
+              </li>
+              <li id="fn3">
+                <p>The chart values and scripted queue counts are defined in <code>essay-demo.js</code>. Its timestamps control animation playback. <a href="#fnref3" class="footnote-backref" role="doc-backlink">↩︎</a></p>
+              </li>
+            </ol>
+          </section>
+
+          <footer class="pf-essay-footer">
+            <span>chao-ui Exposition &amp; Diagram Specimen</span>
+            <span><a href="index.html">← Back to Style Guide</a></span>
+          </footer>
+        </div>
+
+        <aside class="pf-essay-sidenotes" aria-label="Margin notes"></aside>
+      </div>
+    </article>
+  </main>
+
+  <script type="module" src="essay-demo.js"></script>
+</body>
+</html>

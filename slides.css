@@ -1,0 +1,311 @@
+/* @theme chao-ui */
+
+/* ==========================================================================
+   Chao-UI Slide Layer
+   Import after theme.css. Scope a deck with .pf-slides or each Marp section
+   with .pf-slide.
+   ========================================================================== */
+
+:root {
+  --pf-slide-font-sans: var(--pf-font-sans-latin, "IBM Plex Sans", system-ui, -apple-system, sans-serif);
+  --pf-slide-font-sans-sc: var(--pf-font-sans-sc, "IBM Plex Sans SC", "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif);
+  --pf-slide-font-sans-tc: var(--pf-font-sans-tc, "IBM Plex Sans TC", "Source Han Sans TC", "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif);
+  --pf-slide-font-sans-hc: var(--pf-font-sans-hc, "Source Han Sans HC", "Noto Sans CJK HK", "PingFang HK", "IBM Plex Sans TC", sans-serif);
+  --pf-slide-font-serif: var(--pf-font-serif-latin, "IBM Plex Serif", "STIX Two Text", serif);
+  --pf-slide-font-serif-sc: var(--pf-font-serif-sc, "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", serif);
+  --pf-slide-font-serif-tc: var(--pf-font-serif-tc, "Source Han Serif TC", "Noto Serif CJK TC", "Songti TC", serif);
+  --pf-slide-font-math: var(--pf-font-math, "IBM Plex Math", "STIX Two Math", "Cambria Math", serif);
+  --pf-slide-font-code: "IBM Plex Mono", "IBM Plex Math", var(--pf-font-mono, "Inconsolata", monospace);
+  --pf-slide-font-code-sc: var(--pf-font-mono-sc, "Sarasa Mono SC", "Sarasa Fixed SC", "Noto Sans Mono CJK SC", monospace);
+  --pf-slide-font-code-tc: var(--pf-font-mono-tc, "Sarasa Mono TC", "Sarasa Fixed TC", "Noto Sans Mono CJK TC", monospace);
+  --pf-slide-bg: var(--pf-bg, #ffffff);
+  --pf-slide-fg: var(--pf-fg, #020618);
+  --pf-slide-muted: var(--pf-muted, #62748e);
+  --pf-slide-surface: var(--pf-surface, #f8fafc);
+  --pf-slide-border: var(--pf-border, #e2e8f0);
+  --pf-slide-rule: var(--pf-border-strong, #cad5e2);
+  --pf-slide-border-width: var(--pf-border-width, 1px);
+  --pf-slide-accent: var(--pf-accent, #0f172b);
+  --pf-slide-positive: var(--pf-green, #008138);
+  --pf-slide-negative: var(--pf-red, #9f1239);
+  --pf-slide-info: var(--pf-blue, #2563eb);
+  --pf-slide-padding-block: clamp(2.5rem, 6vh, 4.5rem);
+  --pf-slide-padding-inline: clamp(3rem, 7vw, 6rem);
+}
+
+.pf-slides,
+section.pf-slide {
+  position: relative;
+  box-sizing: border-box;
+  color: var(--pf-slide-fg);
+  background-color: var(--pf-slide-bg);
+  font-family: var(--pf-slide-font-sans);
+  font-size: clamp(1.4rem, 2.1vw, 2rem);
+  line-height: 1.35;
+  padding: var(--pf-slide-padding-block) var(--pf-slide-padding-inline);
+  text-rendering: optimizeLegibility;
+}
+
+section.pf-slide:lang(zh-CN),
+section.pf-slide:lang(zh-SG),
+section.pf-slide.pf-slide-sc,
+section.pf-slide .pf-zh-sc,
+.pf-slides .pf-zh-sc {
+  font-family: var(--pf-slide-font-sans-sc);
+  line-height: 1.42;
+}
+
+section.pf-slide:lang(zh-TW),
+section.pf-slide:lang(zh-MO),
+section.pf-slide.pf-slide-tc,
+section.pf-slide .pf-zh-tc,
+.pf-slides .pf-zh-tc {
+  font-family: var(--pf-slide-font-sans-tc);
+  line-height: 1.42;
+}
+
+section.pf-slide:lang(zh-HK),
+section.pf-slide.pf-slide-hc,
+section.pf-slide .pf-zh-hc,
+.pf-slides .pf-zh-hc {
+  font-family: var(--pf-slide-font-sans-hc);
+  line-height: 1.42;
+}
+
+section.pf-slide h1,
+section.pf-slide h2,
+section.pf-slide h3,
+.pf-slides h1,
+.pf-slides h2,
+.pf-slides h3 {
+  max-width: none;
+  color: var(--pf-slide-accent);
+  font-family: inherit;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+section.pf-slide h1,
+section.pf-slide h2,
+section.pf-slide h3,
+.pf-slides h1,
+.pf-slides h2,
+.pf-slides h3 {
+  margin: 0 0 0.65em;
+}
+
+section.pf-slide h1,
+.pf-slides h1 {
+  font-size: 2.15em;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+section.pf-slide h2,
+.pf-slides h2 {
+  font-size: 1.45em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+section.pf-slide h3,
+.pf-slides h3 {
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+section.pf-slide p,
+section.pf-slide li,
+.pf-slides p,
+.pf-slides li {
+  max-width: 42ch;
+}
+
+section.pf-slide p,
+.pf-slides p {
+  margin: 0.45em 0;
+}
+
+section.pf-slide ul,
+section.pf-slide ol,
+.pf-slides ul,
+.pf-slides ol {
+  margin: 0.55em 0;
+  padding-inline-start: 1.2em;
+}
+
+section.pf-slide strong,
+.pf-slides strong {
+  font-weight: 600;
+}
+
+section.pf-slide :lang(zh-CN) em,
+section.pf-slide :lang(zh-SG) em,
+section.pf-slide :lang(zh-TW) em,
+section.pf-slide :lang(zh-HK) em,
+section.pf-slide.pf-slide-sc em,
+section.pf-slide.pf-slide-tc em,
+section.pf-slide.pf-slide-hc em,
+section.pf-slide .pf-zh-sc em,
+section.pf-slide .pf-zh-tc em,
+section.pf-slide .pf-zh-hc em,
+.pf-slides :lang(zh-CN) em,
+.pf-slides :lang(zh-SG) em,
+.pf-slides :lang(zh-TW) em,
+.pf-slides :lang(zh-HK) em,
+.pf-slides .pf-zh-sc em,
+.pf-slides .pf-zh-tc em,
+.pf-slides .pf-zh-hc em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+section.pf-slide code,
+section.pf-slide pre,
+.pf-slides code,
+.pf-slides pre {
+  font-family: var(--pf-slide-font-code);
+}
+
+section.pf-slide .pf-code-cjk,
+section.pf-slide .pf-code-cjk-sc,
+section.pf-slide .pf-code-cjk code,
+section.pf-slide .pf-code-cjk-sc code,
+section.pf-slide .pf-code-cjk pre,
+section.pf-slide .pf-code-cjk-sc pre,
+.pf-slides .pf-code-cjk,
+.pf-slides .pf-code-cjk-sc,
+.pf-slides .pf-code-cjk code,
+.pf-slides .pf-code-cjk-sc code,
+.pf-slides .pf-code-cjk pre,
+.pf-slides .pf-code-cjk-sc pre {
+  font-family: var(--pf-slide-font-code-sc);
+  font-variant-ligatures: none;
+}
+
+section.pf-slide .pf-code-cjk-tc,
+section.pf-slide .pf-code-cjk-tc code,
+section.pf-slide .pf-code-cjk-tc pre,
+.pf-slides .pf-code-cjk-tc,
+.pf-slides .pf-code-cjk-tc code,
+.pf-slides .pf-code-cjk-tc pre {
+  font-family: var(--pf-slide-font-code-tc);
+  font-variant-ligatures: none;
+}
+
+section.pf-slide math,
+section.pf-slide .pf-math-native,
+.pf-slides math,
+.pf-slides .pf-math-native {
+  font-family: var(--pf-slide-font-math);
+}
+
+section.pf-slide .katex,
+.pf-slides .katex {
+  color: inherit;
+  font-size: 1.02em;
+}
+
+section.pf-slide .katex-display,
+.pf-slides .katex-display {
+  margin: 0.8em 0;
+  overflow: visible;
+}
+
+section.pf-slide:lang(zh-CN) .katex .cjk_fallback,
+section.pf-slide:lang(zh-SG) .katex .cjk_fallback,
+section.pf-slide.pf-slide-sc .katex .cjk_fallback,
+section.pf-slide .pf-zh-sc .katex .cjk_fallback,
+.pf-slides .pf-zh-sc .katex .cjk_fallback {
+  font-family: var(--pf-slide-font-sans-sc);
+  font-style: normal;
+}
+
+section.pf-slide:lang(zh-TW) .katex .cjk_fallback,
+section.pf-slide:lang(zh-MO) .katex .cjk_fallback,
+section.pf-slide.pf-slide-tc .katex .cjk_fallback,
+section.pf-slide .pf-zh-tc .katex .cjk_fallback,
+.pf-slides .pf-zh-tc .katex .cjk_fallback {
+  font-family: var(--pf-slide-font-sans-tc);
+  font-style: normal;
+}
+
+section.pf-slide:lang(zh-HK) .katex .cjk_fallback,
+section.pf-slide.pf-slide-hc .katex .cjk_fallback,
+section.pf-slide .pf-zh-hc .katex .cjk_fallback,
+.pf-slides .pf-zh-hc .katex .cjk_fallback {
+  font-family: var(--pf-slide-font-sans-hc);
+  font-style: normal;
+}
+
+.pf-slide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.pf-slide-panel,
+.pf-slide-theorem {
+  padding: 1em 1.1em;
+  border: var(--pf-slide-border-width) solid var(--pf-slide-rule);
+  background-color: var(--pf-slide-surface);
+}
+
+.pf-slide-theorem {
+  border-inline-start: 3px solid var(--pf-slide-accent);
+}
+
+.pf-slide-kicker,
+.pf-slide-source,
+.pf-slide-meta {
+  color: var(--pf-slide-muted);
+  font-family: var(--pf-slide-font-code);
+  font-size: 0.52em;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+}
+
+.pf-slide-kicker {
+  margin-bottom: 1.1em;
+  text-transform: uppercase;
+}
+
+.pf-slide-source {
+  position: absolute;
+  inset-inline: var(--pf-slide-padding-inline);
+  bottom: 1.4rem;
+  max-width: none;
+}
+
+.pf-slide-claim {
+  max-width: 28ch;
+  font-size: 1.28em;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+@media (max-width: 760px) {
+  .pf-slide-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-slides *:not(.pf-slide-motion-full *),
+  section.pf-slide *:not(.pf-slide-motion-full *) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .pf-slides,
+  section.pf-slide {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
